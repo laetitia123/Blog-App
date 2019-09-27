@@ -9,7 +9,7 @@ from ..models import Quotes
 from flask_login import login_required
 from flask import render_template,request,redirect,url_for,abort
 from ..models import Blog, User
-from .forms import ReviewForm,UpdateProfile
+from .forms import BlogForm,UpdateProfile
 from .. import db,photos
 from flask_login import login_required, current_user
 
@@ -102,43 +102,26 @@ def search(movie_name):
 
 
 
-@main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
+
+
+@main.route('/blog/new/', methods = ['GET','POST'])
 @login_required
-def new_review(id):
-    form = ReviewForm()
-    movie = get_movie(id)
+def new_blog():
+    form = BlogForm()
+    # my_upvotes = Upvote.query.filter_by(blog_id = Blog.id)
     if form.validate_on_submit():
-        title = form.title.data
-        review = form.review.data
+        blog = form.blog.data
+        owner_id = current_user
+        category = form.category.data
+        print(current_user._get_current_object().id)
 
-        # Updated review instance
-        new_review = Review(movie_id=movie.id,movie_title=title,image_path=movie.poster,movie_review=review,user=current_user)
-
-        # save review method
-        new_review.save_review()
-        return redirect(url_for('.movie',id = movie.id ))
-
-    title = f'{movie.title} review'
-    return render_template('new_review.html',title = title, review_form=form, movie=movie)
-
-
-# @main.route('/blog/new/', methods = ['GET','POST'])
-# @login_required
-# def new_blog():
-#     form = PitchForm()
-#     my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
-#     if form.validate_on_submit():
-#         description = form.description.data
-#         owner_id = current_user
-#         category = form.category.data
-#         print(current_user._get_current_object().id)
-#         new_pitch = Pitch(user_id =current_user._get_current_object().id, title = title,description=description,category=category)
-#         db.session.add(new_pitch)
-#         db.session.commit()
+        new_blog=Blog(user_id =current_user._get_current_object().id, blog=blog,category=category)
+        db.session.add(new_blog)
+        db.session.commit()
         
         
-#         return redirect(url_for('main.index'))
-#     return render_template('pitch.html',form=form)
+        return redirect(url_for('main.index'))
+    return render_template('blog.html',form=form)
 
 
 @main.route('/comment/new/<int:pitch_id>', methods = ['GET','POST'])

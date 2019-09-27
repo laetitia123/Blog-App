@@ -52,7 +52,7 @@ class Blog(db.Model):
     __tablename__ = 'blogs'
 
     id = db.Column(db.Integer,primary_key = True)
-    description = db.Column(db.String)
+    blog = db.Column(db.String)
     category = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     comments = db.relationship('Comment',backref='blog',lazy='dynamic')
