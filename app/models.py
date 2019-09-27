@@ -4,35 +4,7 @@ from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
 
-class Review:
 
-    all_reviews = []
-
-    def __init__(self,movie_id,title,imageurl,review):
-        self.movie_id = movie_id
-        self.title = title
-        self.imageurl = imageurl
-        self.review = review
-
-
-    def save_review(self):
-        Review.all_reviews.append(self)
-
-
-    @classmethod
-    def clear_reviews(cls):
-        Review.all_reviews.clear()
-
-    @classmethod
-    def get_reviews(cls,id):
-
-        response = []
-
-        for review in cls.all_reviews:
-            if review.movie_id == id:
-                response.append(review)
-
-        return response
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
@@ -46,7 +18,7 @@ class User(UserMixin,db.Model):
     password_secure = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-    reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
+    # reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
   
     @login_manager.user_loader
     def load_user(user_id):
@@ -74,29 +46,40 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User {self.name}' 
-class Review(db.Model):
+class Blog(db.Model):
     
 
-    __tablename__ = 'reviews'
+    __tablename__ = 'blogs'
 
     id = db.Column(db.Integer,primary_key = True)
-    movie_id = db.Column(db.Integer)
-    movie_title = db.Column(db.String)
-    image_path = db.Column(db.String)
-    movie_review = db.Column(db.String)
-    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    description = db.Column(db.String)
+    category = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment',backref='blog',lazy='dynamic')
     
-    def save_review(self):
+
+    
+    def save_blog(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
-    def get_reviews(cls,id):
-        reviews = Review.query.filter_by(movie_id=id).all()
-        return reviews
+    def get_blogs(cls,id):
+        blogs = Blog.query.filter_by(id=id).all()
+        return blogs
+
+class Comment(db.Model):
+    __tablename__='comments'
+    
+    id = db.Column(db.Integer,primary_key=True)
+    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable= False)
+    description = db.Column(db.Text)
 
     
+    def __repr__(self):
+        return f"Comment : id: {self.id} comment: {self.description}"
+
 
 class Quotes:
     '''

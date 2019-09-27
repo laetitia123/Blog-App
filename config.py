@@ -4,12 +4,13 @@ import os
 class Config:
 
     # MOVIE_API_BASE_URL ='https://api.themoviedb.org/3/movie/{}?api_key={}'
-    QUOTES_API_BASE_URL='http://quotes.stormconsultancy.co.uk/random.json'
+    QUOTES_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
+ 
     
     
     # MOVIE_API_KEY ='ff73536b7f0e63d45fe4f61ecf8eb703'
     SECRET_KEY = 'a random string'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:cool@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:cool@localhost/blog'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
      #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -34,7 +35,7 @@ class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:cool@localhost/watchlist_test'
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:cool@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:cool@localhost/blog'
     
     DEBUG = True
 # class DevConfig(Config):

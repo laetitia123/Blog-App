@@ -1,12 +1,14 @@
 
 # from flask import render_template,request,redirect,url_for
 from . import main
-from ..request import get_quotes
+import requests
+from ..requests import getQuotes
+
 from ..forms import ReviewForm
-from ..models import Review
+from ..models import Quotes
 from flask_login import login_required
 from flask import render_template,request,redirect,url_for,abort
-from ..models import Review, User
+from ..models import Blog, User
 from .forms import ReviewForm,UpdateProfile
 from .. import db,photos
 from flask_login import login_required, current_user
@@ -63,17 +65,14 @@ def update_profile(uname):
 @main.route('/')
 def index():
 
-    '''
-    View root page function that returns the index page and its data
-    '''
+    # blogs =Blog.get_blogs()
+    try:
+       quotes = getQuotes()
+    except Exception as e:
+       quotes = "quotes unavailable"
+       title='Welcome to blog'
+    return render_template('index.html',quotes = quotes)
 
-    # Getting popular movie
-    quotes=get_quotes
-
-    title = 'Home - Welcome to Blog'
-
-   
-    return render_template('index.html', quotes=quotes)
 
 @main.route('/movie/<int:id>')
 def movie(id):
@@ -102,24 +101,6 @@ def search(movie_name):
 
 
 
-# @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
-# @login_required
-# def new_review(id):
-#     form = ReviewForm()
-
-#     movie = get_movie(id)
-
-#     if form.validate_on_submit():
-#         title = form.title.data
-#         review = form.review.data
-
-#         new_review = Review(movie.id,title,movie.poster,review)
-#         new_review.save_review()
-
-#         return redirect(url_for('.movie',id = movie.id ))
-
-#     title = f'{movie.title} review'
-#     return render_template('new_review.html',title = title, review_form=form, movie=movie)
 
 @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
 @login_required
@@ -139,3 +120,42 @@ def new_review(id):
 
     title = f'{movie.title} review'
     return render_template('new_review.html',title = title, review_form=form, movie=movie)
+
+
+# @main.route('/blog/new/', methods = ['GET','POST'])
+# @login_required
+# def new_blog():
+#     form = PitchForm()
+#     my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
+#     if form.validate_on_submit():
+#         description = form.description.data
+#         owner_id = current_user
+#         category = form.category.data
+#         print(current_user._get_current_object().id)
+#         new_pitch = Pitch(user_id =current_user._get_current_object().id, title = title,description=description,category=category)
+#         db.session.add(new_pitch)
+#         db.session.commit()
+        
+        
+#         return redirect(url_for('main.index'))
+#     return render_template('pitch.html',form=form)
+
+
+@main.route('/comment/new/<int:pitch_id>', methods = ['GET','POST'])
+@login_required
+def new_comment(pitch_id):
+    form = CommentForm()
+    pitch=Pitch.query.get(pitch_id)
+    if form.validate_on_submit():
+        description = form.description.data
+
+        new_comment = Comment(description = description, user_id = current_user._get_current_object().id, pitch_id = pitch_id)
+        db.session.add(new_comment)
+        db.session.commit()
+
+
+        return redirect(url_for('.new_comment', pitch_id= pitch_id))
+
+    all_comments = Comment.query.filter_by(pitch_id = pitch_id).all()
+    return render_template('comment.html', form = form, comment = all_comments, pitch = pitch )
+
