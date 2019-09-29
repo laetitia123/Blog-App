@@ -73,10 +73,9 @@ def index():
      return render_template('index.html',blogs=blogs,quotes = quotes)
 
 
-
+# ...................................function for blogs...................................
 
 @main.route('/blog/new/', methods = ['GET','POST'])
-
 @login_required
 def new_blog():
     form = BlogForm()
