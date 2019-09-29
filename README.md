@@ -1,22 +1,21 @@
 
 # Blog-App
-
-#### By Laetitia  Uwizeyimana
-##
+## By Laetitia  Uwizeyimana
 ## Description
 This is an application that allows a user to create a Blog he want  and posted it . A user can also be able to comment  ON another user's blog. The user will able to view the Quotes displayed randomly as user refresh the pages.
 This is Blog App.   created on ,29 september 2019
 
 ## BDD
 
-* A user must log in first to the App
-* A user has to write a pitch he want 
-
-* A user has to submit the  pitch he /she has written
-* A user has to vote or downvote the others pitch
-* As user will make also a comment to pitch if he/she want
-
-
+*A user will be able  to view the blog posts on the site
+*A user, will be able  to comment on blog posts
+*A user,  will be able view the most recent posts
+*A user, will be able  to an email alert when a new post is made by joining a subscription.
+*A user, will be able to see random quotes on the site
+*A  writer,  will be able to sign in to the blog.
+*A  writer,  will be able to create a blog from the application.
+*A  writer, will be able  to delete comments that I find insulting or degrading.
+*A  writer, will be able  to update or delete blogs I have created.
 ## Setup/Installation Requirements
      computer with Internet
      linux instalation 
