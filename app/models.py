@@ -65,10 +65,10 @@ class Blog(db.Model):
         db.session.add(self)
         db.session.commit()
 
-#     @classmethod
-#     def get_blogs(cls):
-#         blogs = Blog.query.all()
-#         return blogs
+    @classmethod
+    def get_blogs(cls):
+        blogs = Blog.query.all()
+        return blogs
 
 # class Comment(db.Model):
 #     __tablename__='comments'
