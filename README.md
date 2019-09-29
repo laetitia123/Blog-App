@@ -47,21 +47,25 @@ This is Blog App.   created on ,29 september 2019
     WTForms==2.2.1
      
 
-## Dependencies
-     alembic
-     Flask
-     Flask-Bootstrap
-     Flask-Login
-     Flask-Mail
-     Flask-Migrate
-     Flask-Script=
-     Flask-SQLAlchemy
-     Flask-Uploads
-     Flask-WTF
-     jinja2
-     psycopg2
-     SQLAlchemy==1.2.8
-     WTForms==2.2.1
+## Setup/Installation Requirements
+     computer with Internet
+     linux instalation 
+     update linux :sudo apt-get update
+     intall paython 3.6: sudo apt-get install python3.6
+     install pip:sudo apt-get install python3-pip 
+     install Pyperclip module :python3.6 -m pip install pyperclip
+     install virtual :python3.6 -m venv virtual
+     activate virtual: source virtual/bin/activate
+ ## Technologies Used
+
+    *jQuery
+    * Bootstrap
+    * python3.6
+    *Psql
+    * html
+    * css 
+## link to my Github account
+
 
 ## Support and contact details
 Any contribution or support please contact me on my email:uwizelaetitia@gmail.com
