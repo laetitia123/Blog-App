@@ -153,19 +153,19 @@ def comment(blog_id):
     return render_template('details.html',title = title,blog = blog,comments=comments)
 
 # # .............................update profile.............................
-# @main.route('/details/<int:blog_id>/update',methods=['POST','GET'])
-# @login_required
-# def update(blog_id):
-#     current_blog = Blog.query.filter_by(id = blog_id).first()
-#     if current_blog.user != current_user:
-#         abort(403)
-#     form = BlogUploadForm()
-#     if form.validate_on_submit():
-#         current_blog.blog= form.blog.data
-#         current_blog.category = form.category.data
-#         db.session.commit()
-#         return redirect(url_for('.index'))
-#     elif request.method == 'GET':
-#         form.category.data = current_blog.category
-#         form.blog.data = current_blog.blog
-#     return render_template('blog.html',form = form)
+@main.route('/details/<int:blog_id>/update',methods=['POST','GET'])
+@login_required
+def update(blog_id):
+    current_blog = Blog.query.filter_by(id = blog_id).first()
+    if current_blog.user != current_user:
+        abort(403)
+    form = BlogUploadForm()
+    if form.validate_on_submit():
+        current_blog.blog= form.blog.data
+        current_blog.category = form.category.data
+        db.session.commit()
+        return redirect(url_for('.index'))
+    elif request.method == 'GET':
+        form.category.data = current_blog.category
+        form.blog.data = current_blog.blog
+    return render_template('blog.html',form = form)
