@@ -1,11 +1,11 @@
 
 # Blog-App
 
-#### By **Laetitia **
+#### By Laetitia  Uwizeyimana
 ##
 ## Description
-This is an application that allows a user to create a pitch depending on a certain category and add pitch content. A user can also be able to comment and vote on another user's pitches.
-this is Blog App created on ,29 september 2019
+This is an application that allows a user to create a Blog he want  and posted it . A user can also be able to comment  ON another user's blog. The user will able to view the Quotes displayed randomly as user refresh the pages.
+This is Blog App.   created on ,29 september 2019
 
 ## BDD
 
