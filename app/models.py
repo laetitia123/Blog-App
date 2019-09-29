@@ -70,18 +70,18 @@ class Blog(db.Model):
         blogs = Blog.query.all()
         return blogs
 
-# class Comment(db.Model):
-#     __tablename__='comments'
+class Comment(db.Model):
+    __tablename__='comments'
     
-#     id = db.Column(db.Integer,primary_key=True)
-#     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-#     comment= db.Column(db.String(255))
+    id = db.Column(db.Integer,primary_key=True)
+    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comment= db.Column(db.String(255))
 
-#     @classmethod
-#     def get_comments(cls,blog_id):
-#         comments = Comment.query.filter_by(blog_id=blog_id).all()
-#         return comments
+    @classmethod
+    def get_comments(cls,blog_id):
+        comments = Comment.query.filter_by(blog_id=blog_id).all()
+        return comments
 
 
     
