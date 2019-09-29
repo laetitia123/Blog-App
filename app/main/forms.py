@@ -14,17 +14,17 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 
-# class CommentForm(FlaskForm):
-#     comment = TextAreaField('comment here', validators=[Required()])
-#     submit = SubmitField()
-# class CommentForms(FlaskForm):
-#     comment = TextAreaField('comment here', validators=[Required()])
-#     submit = SubmitField()
+class CommentForm(FlaskForm):
+    comment = TextAreaField('comment here', validators=[Required()])
+    submit = SubmitField()
+class CommentForms(FlaskForm):
+    comment = TextAreaField('comment here', validators=[Required()])
+    submit = SubmitField()
 
 
 
-# class BlogUploadForm(FlaskForm):
+class BlogUploadForm(FlaskForm):
 
-#     category = StringField('blog title', validators=[Required()])
-#     blog = TextAreaField('comment here', validators=[Required()])
-#     submit = SubmitField('Add Blog')
+    category = StringField('blog title', validators=[Required()])
+    blog = TextAreaField('comment here', validators=[Required()])
+    submit = SubmitField('Add Blog')
