@@ -124,16 +124,16 @@ def delete(blog_id):
 
     return redirect(url_for('.index'))
 #     # ..................................detete comment.............................
-# @main.route('/details/<int:comment_id>/delete_comment',methods=['GET','POST'])
-# @login_required
-# def delete_comment(comment_id):
-#     current_comment = Comment.query.filter_by(id = comment_id).first()
-#     if current_comment.user != current_user:
-#         abort(403)
-#     db.session.delete(current_comment)
-#     db.session.commit()
+@main.route('/details/<int:comment_id>/delete_comment',methods=['GET','POST'])
+@login_required
+def delete_comment(comment_id):
+    current_comment = Comment.query.filter_by(id = comment_id).first()
+    if current_comment.user != current_user:
+        abort(403)
+    db.session.delete(current_comment)
+    db.session.commit()
 
-#     return redirect(url_for('main.index'))
+    return redirect(url_for('main.index'))
 
 # # ............to view all details...........................
 
