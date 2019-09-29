@@ -114,16 +114,16 @@ def new_comment(blog_id):
     all_comments =Comment.query.filter_by(blog_id = blog_id).all()
     return render_template('comment.html', form = form, comment = all_comments, blog = blog )
 # #............................... detete function to delete the posted blog....................................
-# @main.route('/details/<int:blog_id>/delete',methods=['POST'])
-# @login_required
-# def delete(blog_id):
-#     current_blog = Blog.query.filter_by(id = blog_id).first()
-#     if current_blog.user != current_user:
-#         abort(403)
-#     db.session.delete(current_blog)
-#     db.session.commit()
+@main.route('/details/<int:blog_id>/delete',methods=['POST'])
+@login_required
+def delete(blog_id):
+    current_blog = Blog.query.filter_by(id = blog_id).first()
+    if current_blog.user != current_user:
+        abort(403)
+    db.session.delete(current_blog)
+    db.session.commit()
 
-#     return redirect(url_for('.index'))
+    return redirect(url_for('.index'))
 #     # ..................................detete comment.............................
 # @main.route('/details/<int:comment_id>/delete_comment',methods=['GET','POST'])
 # @login_required
