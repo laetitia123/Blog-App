@@ -96,23 +96,23 @@ def new_blog():
     return render_template('blog.html',form=form)
 
 
-# @main.route('/comment/new/<int:blog_id>/', methods = ['GET','POST'])
-# @login_required
-# def new_comment(blog_id):
-#     form = CommentForms()
-#     blog=Blog.query.get(blog_id)
-#     if form.validate_on_submit():
-#         comment = form.comment.data
+@main.route('/comment/new/<int:blog_id>/', methods = ['GET','POST'])
+@login_required
+def new_comment(blog_id):
+    form = CommentForms()
+    blog=Blog.query.get(blog_id)
+    if form.validate_on_submit():
+        comment = form.comment.data
 
-#         new_comment =Comment(comment=comment, user_id = current_user._get_current_object().id, blog_id =blog_id)
-#         db.session.add(new_comment)
-#         db.session.commit()
+        new_comment =Comment(comment=comment, user_id = current_user._get_current_object().id, blog_id =blog_id)
+        db.session.add(new_comment)
+        db.session.commit()
 
 
-#         return redirect(url_for('.new_comment', blog_id= blog_id))
+        return redirect(url_for('.new_comment', blog_id= blog_id))
 
-#     all_comments =Comment.query.filter_by(blog_id = blog_id).all()
-#     return render_template('comment.html', form = form, comment = all_comments, blog = blog )
+    all_comments =Comment.query.filter_by(blog_id = blog_id).all()
+    return render_template('comment.html', form = form, comment = all_comments, blog = blog )
 # #............................... detete function to delete the posted blog....................................
 # @main.route('/details/<int:blog_id>/delete',methods=['POST'])
 # @login_required
