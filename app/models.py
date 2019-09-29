@@ -61,9 +61,9 @@ class Blog(db.Model):
     
 
     
-#     def save_blog(self):
-#         db.session.add(self)
-#         db.session.commit()
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
 
 #     @classmethod
 #     def get_blogs(cls):
