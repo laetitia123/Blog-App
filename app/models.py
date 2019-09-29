@@ -48,16 +48,16 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User {self.name}' 
-# class Blog(db.Model):
+class Blog(db.Model):
     
 
-#     __tablename__ = 'blogs'
+    __tablename__ = 'blogs'
 
-#     id = db.Column(db.Integer,primary_key = True)
-#     blog = db.Column(db.String)
-#     category = db.Column(db.String(255), nullable=False)
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-#     comments = db.relationship('Comment',backref='blog',lazy='dynamic')
+    id = db.Column(db.Integer,primary_key = True)
+    blog = db.Column(db.String)
+    category = db.Column(db.String(255), nullable=False)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment',backref='blog',lazy='dynamic')
     
 
     
