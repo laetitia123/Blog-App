@@ -42,6 +42,8 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user,blog=blog)
+    
+    # ..........................................login ..................................
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required

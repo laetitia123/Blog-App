@@ -1,7 +1,7 @@
 
 # Blog-App
 
-#### By Laetitia  Uwizeyimana
+## By Laetitia  Uwizeyimana
 ##
 ## Description
 This is an application that allows a user to create a Blog he want  and posted it . A user can also be able to comment  ON another user's blog. The user will able to view the Quotes displayed randomly as user refresh the pages.
