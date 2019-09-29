@@ -60,7 +60,7 @@ def update_profile(uname):
 
     return render_template('profile/update.html',form =form)
 
-# Views
+
 @main.route('/')
 def index():
 
@@ -93,7 +93,7 @@ def new_blog():
         
         return redirect(url_for('main.index'))
     return render_template('blog.html',form=form)
-
+# .................................comment function...............................................
 
 @main.route('/comment/new/<int:blog_id>/', methods = ['GET','POST'])
 @login_required
