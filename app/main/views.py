@@ -137,20 +137,20 @@ def delete_comment(comment_id):
 
 # # ............to view all details...........................
 
-# @main.route('/details/<int:blog_id>/comment',methods=['POST','GET'])
-# @login_required
-# def comment(blog_id):
-#     current_blog=Blog.query.filter_by(id = blog_id).first()
-#     if request.method == "POST":
-#         comment = request.form.get("comment")
-#         new_comment = Comment(comment = comment,user = current_user,blog = current_blog)
-#         db.session.add(new_comment)
-#         db.session.commit()
-#     blog= Blog.query.get_or_404(blog_id)
-#     comments = Comment.get_comments(blog_id)
+@main.route('/details/<int:blog_id>/comment',methods=['POST','GET'])
+@login_required
+def comment(blog_id):
+    current_blog=Blog.query.filter_by(id = blog_id).first()
+    if request.method == "POST":
+        comment = request.form.get("comment")
+        new_comment = Comment(comment = comment,user = current_user,blog = current_blog)
+        db.session.add(new_comment)
+        db.session.commit()
+    blog= Blog.query.get_or_404(blog_id)
+    comments = Comment.get_comments(blog_id)
 
-#     title = 'welcome to details'
-#     return render_template('details.html',title = title,blog = blog,comments=comments)
+    title = 'welcome to details'
+    return render_template('details.html',title = title,blog = blog,comments=comments)
 
 # # .............................update profile.............................
 # @main.route('/details/<int:blog_id>/update',methods=['POST','GET'])
