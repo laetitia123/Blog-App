@@ -5,7 +5,7 @@
 This is an application that allows a user to create a Blog he want  and posted it . A user can also be able to comment  ON another user's blog. The user will able to view the Quotes displayed randomly as user refresh the pages.
 This is Blog App.   created on ,29 september 2019
 
-## BDD
+>BDD
 
   * A user will be able  to view the blog posts on the site
   * A user, will be able  to comment on blog posts
