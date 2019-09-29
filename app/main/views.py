@@ -135,7 +135,7 @@ def delete_comment(comment_id):
 
     return redirect(url_for('main.index'))
 
-# # ............to view all details...........................
+# # ............ function to view all details but by writer...........................
 
 @main.route('/details/<int:blog_id>/comment',methods=['POST','GET'])
 @login_required
