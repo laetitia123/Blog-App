@@ -25,6 +25,6 @@ class CommentForms(FlaskForm):
 
 class BlogUploadForm(FlaskForm):
 
-    category = StringField('blog title', validators=[Required()])
-    blog = TextAreaField('comment here', validators=[Required()])
-    submit = SubmitField('Add Blog')
+    blog = StringField('blog title', validators=[Required()])
+    category= TextAreaField('comment here', validators=[Required()])
+    submit = SubmitField('save change')

@@ -50,17 +50,20 @@
     <button class="btn btn-success"><a href="{{url_for('main.update_profile',uname=user.username)}}" >Edit Bio </a></button>
 {% endif %}
   </div>
-  <h1>My blogs</h1>
+  <div class="col-md-4">
+  <h1 style="font-family: 'Times New Roman', Times, serif;font-size:24px;">My blogs</h1>
 {%for blog in blog%}
 {{blog.blog}}
 <br>
 {{blog.category|truncate (180)}}
+
 
 <a class="btn btn-primary btn-sm sm-1"href="{{url_for('main.update',blog_id = blog.id)}}">Update</a>
 <a href="{{url_for('main.comment',blog_id=blog.id)}}" class="btn btn-primary">comment</a> 
 
 {%endfor%}
 <!--  -->
+</div>
 {% endblock %}
     
  
