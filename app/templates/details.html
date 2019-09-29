@@ -15,8 +15,8 @@
             </div>
             {% if blog.user == current_user %}
                     <div>
-                            <!-- <a class="btn btn-primary btn-sm sm-1"href="{{url_for('main.update',blog_id = blog.id)}}">Update</a> -->
-                        <!-- <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">Delete</button> -->
+                        <a class="btn btn-primary btn-sm sm-1"href="{{url_for('main.update',blog_id = blog.id)}}">Update</a>
+                        <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">Delete</button>
                     </div>
                     {% endif %}
         </div>
@@ -66,4 +66,4 @@
           </div>
         </div>
       </div>
-{% endblock %} -->
+{% endblock %} 

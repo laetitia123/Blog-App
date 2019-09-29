@@ -42,7 +42,7 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user,blog=blog)
-    
+
     # ..........................................login ..................................
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -114,6 +114,8 @@ def new_comment(blog_id):
 
     all_comments =Comment.query.filter_by(blog_id = blog_id).all()
     return render_template('comment.html', form = form, comment = all_comments, blog = blog )
+
+    
 # #............................... detete function to delete the posted blog....................................
 @main.route('/details/<int:blog_id>/delete',methods=['POST'])
 @login_required
