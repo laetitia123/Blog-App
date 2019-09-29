@@ -77,23 +77,23 @@ def index():
 
 @main.route('/blog/new/', methods = ['GET','POST'])
 
-# @login_required
-# def new_blog():
-#     form = BlogForm()
-#     # my_upvotes = Upvote.query.filter_by(blog_id = Blog.id)
-#     if form.validate_on_submit():
-#         blog = form.blog.data
-#         owner_id = current_user
-#         category = form.category.data
-#         print(current_user._get_current_object().id)
+@login_required
+def new_blog():
+    form = BlogForm()
+    # my_upvotes = Upvote.query.filter_by(blog_id = Blog.id)
+    if form.validate_on_submit():
+        blog = form.blog.data
+        owner_id = current_user
+        category = form.category.data
+        print(current_user._get_current_object().id)
 
-#         new_blog=Blog(user_id =current_user._get_current_object().id, blog=blog,category=category)
-#         db.session.add(new_blog)
-#         db.session.commit()
+        new_blog=Blog(user_id =current_user._get_current_object().id, blog=blog,category=category)
+        db.session.add(new_blog)
+        db.session.commit()
         
         
-#         return redirect(url_for('main.index'))
-#     return render_template('blog.html',form=form)
+        return redirect(url_for('main.index'))
+    return render_template('blog.html',form=form)
 
 
 # @main.route('/comment/new/<int:blog_id>/', methods = ['GET','POST'])
