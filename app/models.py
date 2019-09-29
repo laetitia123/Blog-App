@@ -18,6 +18,8 @@ class User(UserMixin,db.Model):
     password_secure = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
+    blogs = db.relationship('Blog',backref='user',lazy = 'dynamic')
+    comments = db.relationship('Comment',backref='user',lazy = 'dynamic')
     # reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
   
     @login_manager.user_loader
@@ -46,40 +48,44 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User {self.name}' 
-class Blog(db.Model):
+# class Blog(db.Model):
     
 
-    __tablename__ = 'blogs'
+#     __tablename__ = 'blogs'
 
-    id = db.Column(db.Integer,primary_key = True)
-    blog = db.Column(db.String)
-    category = db.Column(db.String(255), nullable=False)
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    comments = db.relationship('Comment',backref='blog',lazy='dynamic')
+#     id = db.Column(db.Integer,primary_key = True)
+#     blog = db.Column(db.String)
+#     category = db.Column(db.String(255), nullable=False)
+#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+#     comments = db.relationship('Comment',backref='blog',lazy='dynamic')
     
 
     
-    def save_blog(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save_blog(self):
+#         db.session.add(self)
+#         db.session.commit()
 
-    @classmethod
-    def get_blogs(cls,id):
-        blogs = Blog.query.filter_by(id=id).all()
-        return blogs
+#     @classmethod
+#     def get_blogs(cls):
+#         blogs = Blog.query.all()
+#         return blogs
 
-class Comment(db.Model):
-    __tablename__='comments'
+# class Comment(db.Model):
+#     __tablename__='comments'
     
-    id = db.Column(db.Integer,primary_key=True)
-    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable= False)
-    description = db.Column(db.Text)
+#     id = db.Column(db.Integer,primary_key=True)
+#     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     comment= db.Column(db.String(255))
+
+#     @classmethod
+#     def get_comments(cls,blog_id):
+#         comments = Comment.query.filter_by(blog_id=blog_id).all()
+#         return comments
+
 
     
-    def __repr__(self):
-        return f"Comment : id: {self.id} comment: {self.description}"
-
+   
 
 class Quotes:
     '''

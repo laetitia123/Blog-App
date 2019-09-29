@@ -1,3 +1,2 @@
-# whachlist
 
 # Blog-App

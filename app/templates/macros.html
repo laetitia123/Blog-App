@@ -1,33 +1,26 @@
-<!-- Displaying movie list macro 
-{% macro displayQuotesList(quote_list) %}
+<!-- this macros for comment that can be comments by every one -->
+{% macro displayComment(comments) %}
+<ul>
 
-    {% for  quote in quote_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/movie/{{movie.id}}">
-                    {{ movie.title|truncate(10)}}</a>
-            </li>
-        </div>
+			{% if comments %}
+			{% for comment in comments %}
+				<div class="row text-center">
+						<a><p style="color: brown">{{ comment.comment }}</p></a>
+						<small> posted by {{comment.user.username}}</small>
+				</div>
+			{% endfor %}
+			{% else %}
 
-    {% endfor %}
+			<h3>This post does  not does not have any comments yet !</h3>
+			{%endif%}
 
+    </ul>
+    
 {% endmacro %}
+			
 
-{% macro displayReviews(review_list) %}
 
-    {% for review in review_list %}
 
-    <div class="row">
 
-      <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
-        <h4>Author</h4>
-        <p>{{review.user.username}}</p>
-      </div>
-      <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-        <h2> <a href="{{url_for('main.single_review',id=review.id)}}">{{review.movie_title}}</a> </h2>
-      </div>
-    </div>
 
-    {% endfor %}
-{% endmacro %} -->
+

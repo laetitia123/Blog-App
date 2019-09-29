@@ -14,15 +14,18 @@
 	<div class="row">
 	
 				{{wtf.quick_form(form)}}
-		<ul style="list-style: none;">
+        <ul style="list-style: none;">
+         
 				{% for blog in blogs %}
 					<div class="list-group">
 						<a href="#">
 							<div class="list-item">
+								<h4>{{ blog.blog }}</h4>
 								<p>{{blog.category}}</p>
+								<h6> Posted by {{user.username}}.</h6>
 							</div>
-							<h4>{{ blog.blog }}</h4>
-							<h6> Posted by {{user.username}}.</h6>
+							
+							
 						</a>
 					</div>
 				{% endfor %}
