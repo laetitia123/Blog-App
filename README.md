@@ -7,8 +7,8 @@ This is Blog App.   created on ,29 september 2019
 
 ## BDD
 
-*A user will be able  to view the blog posts on the site
-*A user, will be able  to comment on blog posts
+  *A user will be able  to view the blog posts on the site
+  *A user, will be able  to comment on blog posts
 *A user,  will be able view the most recent posts
 *A user, will be able  to an email alert when a new post is made by joining a subscription.
 *A user, will be able to see random quotes on the site
