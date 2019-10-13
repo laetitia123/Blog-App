@@ -29,6 +29,14 @@ This is Gallery App .   created on ,13 november 2019
      install Pyperclip module :python3.6 -m pip install pyperclip
      install virtual :python3.6 -m venv virtual
      activate virtual: source virtual/bin/activate
+     pip install django==1.11 :intall django
+     python3.6 manage.py runserver:to run App
+     python3.6 manage.py check:migration
+     python3.6 manage.py test gallery:migration
+     python manage.py makemigrations gallery
+     python3.6 manage.py sqlmigrate gallery 0001
+     python3.6 manage.py migrate
+
  ## Technologies Used
 
     *jQuery
