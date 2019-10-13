@@ -1,25 +1,40 @@
-
 # Blog-App
-
 
 ## By Laetitia  Uwizeyimana
 
 ## Description
-This is an application that will allow user to see my gallery  . A user can also be able to click on image to seethe deatails  use will be able to copy the link of image he/she has been clicked on
-This is Gallery App .   created on ,13 november 2019
+This is an application that allows a user to create a Blog he want  and posted it . A user can also be able to comment  ON another user's blog. The user will able to view the Quotes displayed randomly as user refresh the pages.
+This is Blog App.   created on ,29 september 2019
 
 >BDD
 
-  * A user will be able to see the photos admin has posted
-  * A user, will be able   to view details by clicking on photo
-  * A user,  will be able to copy th link of a photo if she want
-  
+  * A user will be able  to view the blog posts on the site
+  * A user, will be able  to comment on blog posts
+  * A user,  will be able view the most recent posts
+  * A user, will be able  to an email alert when a new post is made by joining a subscription.
+  * A user, will be able to see random quotes on the site
+  * A  writer,  will be able to sign in to the blog.
+  * A  writer,  will be able to create a blog from the application.
+  * A  writer, will be able  to delete comments that I find insulting or degrading.
+  * A  writer, will be able  to update or delete blogs I have created.
 ## Setup/Installation Requirements
-     Django==1.11
-     pkg-resources==0.0.0
-     pytz==2019.3
-
-
+    alembic==1.1.0
+    blinker==1.4
+    Click==7.0
+    dominate==2.4.0
+    Flask==1.1.1
+    Flask-Bootstrap==3.3.7.1
+    Flask-Login==0.4.1
+    Flask-Mail==0.9.1
+    Flask-Migrate==2.5.2
+    Flask-Script==2.0.6
+    Flask-SimpleMDE==0.3.0
+    Flask-SQLAlchemy==2.4.0
+    Flask-Uploads==0.2.1
+    Flask-WTF==0.14.2
+    gunicorn==19.9.0
+    itsdangerous==1.1.0
+    Jinja2==2.10.1
 ## Setup/Installation Requirements
      computer with Internet
      linux instalation 
@@ -29,14 +44,6 @@ This is Gallery App .   created on ,13 november 2019
      install Pyperclip module :python3.6 -m pip install pyperclip
      install virtual :python3.6 -m venv virtual
      activate virtual: source virtual/bin/activate
-     pip install django==1.11 :intall django
-     python3.6 manage.py runserver:to run App
-     python3.6 manage.py check:migration
-     python3.6 manage.py test gallery:migration
-     python manage.py makemigrations gallery
-     python3.6 manage.py sqlmigrate gallery 0001
-     python3.6 manage.py migrate
-
  ## Technologies Used
 
     *jQuery
