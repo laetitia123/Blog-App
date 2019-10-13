@@ -15,8 +15,10 @@ This is Gallery App .   created on ,13 november 2019
   * A user,  will be able to copy th link of a photo if she want
   
 ## Setup/Installation Requirements
-   
-     
+     Django==1.11
+     pkg-resources==0.0.0
+     pytz==2019.3
+
 
 ## Setup/Installation Requirements
      computer with Internet
